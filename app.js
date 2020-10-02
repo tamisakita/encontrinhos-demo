@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const express = require('express');
-const hbs = require('hbs');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
@@ -11,8 +10,8 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 
 mongoose.connect('mongodb://localhost/encontrinhos-database', {useUnifiedTopology:true, useNewUrlParser:true})
-    .then(()=> console.log('funcionou'));
-    .catch( error =>{
+  .then(()=> console.log('funcionou'))
+  .catch( error =>{
         console.log(error);
         throw new Error ('databse not working');
     });
