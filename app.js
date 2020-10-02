@@ -10,11 +10,12 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 
 mongoose.connect('mongodb://localhost/encontrinhos-database', {useUnifiedTopology:true, useNewUrlParser:true})
-  .then(()=> console.log('funcionou'))
-  .catch( error =>{
-        console.log(error);
-        throw new Error ('databse not working');
-    });
+
+  .then(() => console.log('funcionou'))
+  .catch( error => {
+    console.log(error);
+    throw new Error ('databse not working');
+});
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'hbs');
