@@ -10,6 +10,7 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 
 mongoose.connect('mongodb://localhost/encontrinhos-database', {useUnifiedTopology:true, useNewUrlParser:true})
+
   .then(() => console.log('funcionou'))
   .catch( error => {
     console.log(error);
