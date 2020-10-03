@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const participantList = new Schema({
    user: {type: mongoose.Types.ObjectId, ref:'User', required: false}
-});
+});//fixed
 
 const eventSchema = new Schema({
     name: {type: String, required: true},
