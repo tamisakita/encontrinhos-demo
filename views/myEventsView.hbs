@@ -1,0 +1,31 @@
+
+  <main>
+  {{#if eventsData}}
+    <div class="info-dash-container">
+      <h2>Meus Eventos</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Horário</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Criador</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          {{#each eventsData}}
+            {{>urlTableRows this}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{else}}
+    <div class="empty-dash-container">
+      <img src="/images/url-icon-big.svg" alt="url icon image big size">
+
+      <h2>Ainda não existem eventos.</h2>
+    </div>
+  {{/if}}
+</main>  
