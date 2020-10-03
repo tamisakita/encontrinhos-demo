@@ -1,1 +1,34 @@
-<h1>loginnn</h1>
+<main>
+ <form action="/login" method="post">
+   <h2>Entrar</h2>
+    <div>
+      <label for="name"></label>
+      <input type="text" name="name" id="name" placeholder="Nome de usuário">
+
+      {{#if nameError}}
+        <div>
+          <span>{{nameError}}</span>
+        </div>
+      {{/if}}
+    </div>
+
+    <div>
+      <label for="password"></label>
+      <input type="password" name="password" id="password" placeholder="Senha">
+
+      {{#if passwordError}}
+        <div>
+          <span>{{passwordError}}</span>
+        </div>
+      {{/if}}
+    </div>
+
+    <button type="submit">Entrar</button>
+
+    {{#if errorMessage}}
+      <div>
+        <span>{{errorMessage}}</span>
+      </div>
+    {{/if}}
+  </form>
+</main>
