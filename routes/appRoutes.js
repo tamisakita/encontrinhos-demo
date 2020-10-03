@@ -10,5 +10,6 @@ router.get('/newEventView', (request, responde) => {
 
 router.post('/newEventView', (request, response)=> {
     const {name, date, time, duration, location, partcipantsAmt, description } = request.body;
-})
+});
+
 module.exports = router;

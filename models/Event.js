@@ -1,10 +1,10 @@
-const moongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-const { Schema } = moongoose;
+const { Schema } = mongoose;
 
 const participantList = new Schema({
-    type: moongoose.Types.ObjectId, ref:'User', required: false
-})
+   user: {type: mongoose.Types.ObjectId, ref:'User', required: false}
+});//fixed
 
 const eventSchema = new Schema({
     name: {type: String, required: true},
@@ -13,7 +13,7 @@ const eventSchema = new Schema({
     duration: {type: Number, required: true},
     location: {type: String, required: true},
     participantsAmt: {type: Number, required: true},
-    owner: {type: moongoose.Types.ObjectId, ref:'User', required: false},
+    owner: {type: mongoose.Types.ObjectId, ref:'User', required: false},
     description: {type: String, required: true},
     participantsId: {type: [participantList], required: false},
 },
@@ -22,6 +22,6 @@ const eventSchema = new Schema({
 
 });
 
-const Event = mongoose.model('user', userSchema);
+const Event = mongoose.model('Event', eventSchema);
 
 module.exports = Event;
