@@ -1,6 +1,6 @@
 const express = require('express');
 const User = require('../models/User');
-const generateEncryptedPassword = require('../utils/passwordManager');
+const passwordManager = require('../utils/passwordManager');
 
 const router = express.Router();
 
@@ -73,7 +73,7 @@ router.post('/signup', async (req, res) => {
     const newUser = new User({
       name,
       email,
-      password: await generateEncryptedPassword(password),
+      password: await passwordManager.generateEncryptedPassword(password),
     });
 
     await newUser.save();
@@ -81,6 +81,28 @@ router.post('/signup', async (req, res) => {
     res.redirect('/login');
   } catch (error) {
     console.log(error);
+  }
+});
+
+router.get('/login', (req, res) => res.render('auth-views/login'));
+
+router.post('/login', async (req, res, next) => {
+  try {
+    const { name, password } = req.body;
+
+    const existingUser = await User.findOne({ name });
+
+    if (!existingUser || !passwordManager.verifyPassword(password, existingUser.password)) {
+      res.render('auth-views/login', { errorMessage: 'Nome de usuário ou senha incorretos.' });
+
+      return;
+    }
+
+    req.session.currentUser = existingUser;
+
+    res.redirect('/home');
+  } catch (error) {
+    return next(error);
   }
 });
 

@@ -10,4 +10,10 @@ const generateEncryptedPassword = async password => {
   return encryptedPassword;
 };
 
-module.exports = generateEncryptedPassword;
+// eslint-disable-next-line max-len
+const verifyPassword = (password, encryptedPassword) => bcrypt.compareSync(password, encryptedPassword);
+
+module.exports = {
+  generateEncryptedPassword,
+  verifyPassword,
+};
