@@ -5,7 +5,7 @@ const protectedRoute = require('../middlewares/protectedRoutes');
 const router = express.Router();
 
 // 'home'route
-router.use((protectedRoutes);
+router.use((protectedRoute);
 
   router.get('/home', async (req, res) => { 
       res.render('home');// atualizar a rota depois no próximo pull request
