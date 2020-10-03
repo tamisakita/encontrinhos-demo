@@ -1,4 +1,3 @@
-
 const express = require('express');
 const User = require('../models/User');
 const generateEncryptedPassword = require('../utils/passwordManager');
@@ -77,7 +76,6 @@ router.post('/signup', async (req, res) => {
       password: await generateEncryptedPassword(password),
     });
 
-    console.log(newUser);
     await newUser.save();
 
     res.redirect('/login');
@@ -87,4 +85,3 @@ router.post('/signup', async (req, res) => {
 });
 
 module.exports = router;
-
