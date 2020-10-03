@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const hbs = require('hbs');
 
 const appRoutes = require('./routes/appRoutes');
 const authRoutes = require('./routes/authRoutes');
@@ -20,6 +21,7 @@ mongoose.connect('mongodb://localhost/encontrinhos-database', {useUnifiedTopolog
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
+hbs.registerPartials(__dirname + '/views/partial');
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.use('/', appRoutes);

@@ -6,17 +6,53 @@
     <div>
       <label for="name"></label>
       <input type="text" name="name" id="name" placeholder="Nome de usuário">
+
+      {{#if nameError}}
+        <div>
+          <span>{{nameError}}</span>
+        </div>
+      {{/if}}
     </div>
+
     <div>
       <label for="email"></label>
       <input type="text" name="email" id="email" placeholder="E-mail">
+      {{#if emailError}}
+        <div>
+          <span>{{emailError}}</span>
+        </div>
+      {{/if}}
     </div>
+
     <div>
       <label for="password"></label>
       <input type="password" name="password" id="password" placeholder="Senha">
+
+      {{#if passwordError}}
+        <div>
+          <span>{{passwordError}}</span>
+        </div>
+      {{/if}}
     </div>
-    
+
+    <div>
+      <label for="confirmationPassword"></label>
+      <input type="password" name="confirmationPassword" id="confirmationPassword" placeholder="Confirmação de senha">
+
+      {{#if confirmationPasswordError}}
+        <div>
+          <span>{{confirmationPasswordError}}</span>
+        </div>
+      {{/if}}
+    </div>
+
     <button type="submit">Cadastrar-se</button>
+
+    {{#if errorMessage}}
+      <div>
+        <span>{{errorMessage}}</span>
+      </div>
+    {{/if}}
   </form>
 
   <h2>Já é um membro?<a href="/login" type="button">Entrar</a></h2>
