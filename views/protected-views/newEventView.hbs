@@ -1,12 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href= "/stylesheet/style.css">
-    <title>Create Event</title>
-</head>
+
 <body>
-   {{{body}}} 
+<main>
+   <form action="/newEventView" method="post">
+    <div>
+        <label for="name-input">Nome:</label>
+        <input type="text" name ="name" id="name-input" />
+    </div>
+
+    <div>
+        <label for="date-input">Date:</label>
+        <input type="date" name="date" id="date" />
+    </div>
+
+    <div>
+        <label for="time-input">Horário(hh:mm):</label>
+        <textarea type="Number" name="time" id="time-input"></textarea>
+    </div>
+
+    <div>
+        <label for="duration-input">Duração(em horas):</label>
+        <textarea id="duration" name="duration" id= "duration-input"></textarea>
+    </div>
+
+    <div>
+        <label for="location-input">Localização</label>
+        <input type="text" name ="location" id="location-input" />
+    </div>
+
+    <div>
+        <label for="participantsAmt-input">Número de Participantes</label>
+        <input type="number" name="participantsAmt" id="participantsAmt-input" />
+    </div>
+
+    <div>
+        <label for="description-input">Descrição</label>
+        <textarea name="description" id="description-input" cols="30" rows="4" ></textarea>
+    </div>
+    
+
+    <div class="button">
+        <button type="submit">Criar Evento</button>
+    </div>
+</form> 
+</main>
 </body>
-</html>
