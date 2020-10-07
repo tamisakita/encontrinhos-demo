@@ -44,7 +44,7 @@ router.get('/myEventsView', async (req, res) => {
       const eventsData = await Event.findById({ $or: [{participantsId: { $in: [req.session.currentUser._id] }}, {owner:req.session.currentUser._id}]});
 
     
-      res.render('protected-views/myEventsView', { eventsData });// essa pesquisa não está funcionando - avaliar
+      res.render('protected-views/myEventsView' , { eventsData });
     } catch (error) {
       console.log(error);
     }
