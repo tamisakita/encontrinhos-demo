@@ -33,4 +33,3 @@ app.use('/', appRoutes);
 
 app.listen(process.env.PORT, () => console.log(`My first app listening on port ${process.env.PORT}!`));
 
-module.exports = app;
