@@ -19,7 +19,9 @@ router.get('/newEventView', (req, res) => {
 });
 
 router.post('/newEventView', async (req, res)=> {
-    const {name, date, time, duration, location, partcipantsAmt, description } = request.body;
+    const {name, date, time, duration, location, participantsAmt, description } = req.body;
+    
+    const {currentUser} = req.session;
 
     const newEvent = new Event({
     name: name,
@@ -27,24 +29,24 @@ router.post('/newEventView', async (req, res)=> {
     time: time,
     duration: duration,
     location: location,
-    participantsAmt:partcipantsAmt,
+    participantsAmt:participantsAmt,
     description: description, 
-    owner: req.session.current._id, 
+    owner: currentUser._id, 
 });
 
 await newEvent.save();
 
-res.redirect('/protected-views/myEventsView');
+res.redirect('protected-views/myEventsView');
 });
 
 //'my events'route
 
 router.get('/myEventsView', async (req, res) => { 
     try {
-      const eventsData = await Event.findById({ $or: [{participantsId: { $in: [req.session.currentUser._id] }}, {owner:req.session.currentUser._id}]});
+      const eventsData = await Event.find({ $or: [{participantsId: { $in: [req.session.currentUser._id] }}, {owner:req.session.currentUser._id}]}).populate('owner');
 
-    
       res.render('protected-views/myEventsView' , { eventsData });
+
     } catch (error) {
       console.log(error);
     }
