@@ -7,9 +7,9 @@ const router = express.Router();
 // 'home'route
 router.use(protectedRoute);
 
-router.get('/home', async (req, res) => { 
-      res.render('home');// atualizar a rota depois no próximo pull request
-  });
+router.get('/home', (req, res) => {
+  res.render('protected-views/home', { loggedUser: req.session.currentUser });
+});
 
 //creating 'new event' route
 
@@ -36,8 +36,6 @@ await newEvent.save();
 res.redirect('/myEventsView');// atualizar a rota depois no próximo pull request
 });
 
-module.exports = router;
-
 //'my events'route
 
 router.get('/myEventsView', async (req, res) => { 
@@ -45,9 +43,10 @@ router.get('/myEventsView', async (req, res) => {
       const eventsData = await Event.find({$or: [{participantsId: req.session.currentUser._id}, {owner:req.session.currentUser._id} ]});
 
     
-      res.render('myEventsView', { eventsData });// atualizar a rota depois no próximo pull request
+      res.render('protected-views/myEventsView', { eventsData });// atualizar a rota depois no próximo pull request
     } catch (error) {
       console.log(error);
     }
   });
   
+module.exports = router;
