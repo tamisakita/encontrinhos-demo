@@ -43,11 +43,7 @@ router.get('/myEventsView', async (req, res) => {
       const eventsData = await Event.find({$or: [{participantsId: req.session.currentUser._id}, {owner:req.session.currentUser._id} ]});
 
     
-<<<<<<< HEAD
       res.render('protected-views/myEventsView' , { eventsData });
-=======
-      res.render('protected-views/myEventsView', { eventsData });// atualizar a rota depois no próximo pull request
->>>>>>> 5bce89195edfe0e94245b0a15dd81eb404b25130
     } catch (error) {
       console.log(error);
     }
