@@ -1,6 +1,7 @@
 const express = require('express');
 const Event = require('../models/Event');
 const protectedRoute = require('../middlewares/protectedRoutes');
+const { request } = require('express');
 
 const router = express.Router();
 
@@ -40,17 +41,36 @@ res.redirect('/protected-views/myEventsView');
 
 router.get('/myEventsView', async (req, res) => { 
     try {
-      const eventsData = await Event.find({$or: [{participantsId: req.session.currentUser._id}, {owner:req.session.currentUser._id} ]});
+      const eventsData = await Event.findById({ $or: [{participantsId: { $in: [req.session.currentUser._id] }}, {owner:req.session.currentUser._id}]});
 
     
-<<<<<<< HEAD
-      res.render('protected-views/myEventsView' , { eventsData });
-=======
-      res.render('protected-views/myEventsView', { eventsData });// atualizar a rota depois no próximo pull request
->>>>>>> 5bce89195edfe0e94245b0a15dd81eb404b25130
+      res.render('protected-views/myEventsView', { eventsData });// essa pesquisa não está funcionando - avaliar
     } catch (error) {
       console.log(error);
     }
   });
   
 module.exports = router;
+
+router.get('/newEventView', (req, res) => { 
+
+  res.render('protected-views/newEventView');
+
+});
+
+
+//Each eventPageView route
+
+router.get('/eventPageView/:eventId', async( req, res)=> {
+  try{
+    const { eventId } = req.params;
+
+    const eventDetail = await Event.findById(eventId);
+
+    res.render('protected-views/eventPageView', eventDetail);
+
+  } catch(error){
+    console.log(error)
+  }
+
+});

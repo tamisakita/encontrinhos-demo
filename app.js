@@ -15,10 +15,10 @@ require('./configs/session.config')(app);
 
 mongoose.connect('mongodb://localhost/encontrinhos-database', {useUnifiedTopology:true, useNewUrlParser:true})
 
-  .then(() => console.log('funcionou'))
+  .then(() => console.log('Mongo connected'))
   .catch( error => {
     console.log(error);
-    throw new Error ('databse not working');
+    throw new Error ('database not working');
   });
 
 app.use(express.static(__dirname + '/public'));
