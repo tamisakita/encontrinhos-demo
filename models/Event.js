@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const participantList = new Schema({
-   user: {type: mongoose.Types.ObjectId, ref:'User', required: false}
-});//fixed
-
 const eventSchema = new Schema({
     name: {type: String, required: true},
     date: {type: String, required: true},
@@ -15,7 +11,7 @@ const eventSchema = new Schema({
     participantsAmt: {type: Number, required: true},
     owner: {type: mongoose.Types.ObjectId, ref:'User', required: false},
     description: {type: String, required: true},
-    participantsId: {type: [participantList], required: false},
+    participantsId: [{type: mongoose.Types.ObjectId, ref:'User', required: false}],
 },
 {
     timestamps: true,
