@@ -67,12 +67,26 @@ router.get('/eventPageView/:eventId', async( req, res)=> {
   try{
     const { eventId } = req.params;
 
-    const eventDetail = await Event.findById(eventId);
+    const eventDetail = await (await Event.findById(eventId)).populate('owner');
 
     res.render('protected-views/eventPageView', eventDetail, { loggedUser: req.session.currentUser });
 
   } catch(error){
-    console.log(error)
+    console.log(error);
   }
 
 });
+
+//Action from the button "Inscrever-se"
+
+router.post('/home/:eventId/edit', async (req, res)=> {
+  const { eventId } = req.params;
+  const {  userId  } = req.session.currentUser._id;
+
+  await Event.findById(eventId)
+  .then (event => event.participantsId.push(userId))
+  .then (event => event.save());
+   
+});
+
+module.exports = router;
