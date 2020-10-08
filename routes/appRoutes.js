@@ -5,11 +5,19 @@ const { request } = require('express');
 
 const router = express.Router();
 
-// 'home'route
 router.use(protectedRoute);
 
-router.get('/home', (req, res) => {
-  res.render('protected-views/home', { loggedUser: req.session.currentUser });
+// 'home'route
+router.get('/home', async (req, res) => {
+  try {
+    const { eventId } = req.params;
+
+    const eventsData = await Event.find(eventId).populate('owner');
+
+    res.render('protected-views/home', { eventsData, loggedUser: req.session.currentUser });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 //creating 'new event' route
@@ -45,21 +53,12 @@ router.get('/myEventsView', async (req, res) => {
     try {
       const eventsData = await Event.find({ $or: [{participantsId: { $in: [req.session.currentUser._id] }}, {owner:req.session.currentUser._id}]}).populate('owner');
     
-      res.render('protected-views/myEventsView' , { eventsData });
+      res.render('protected-views/myEventsView' , { eventsData, loggedUser: req.session.currentUser });
 
     } catch (error) {
       console.log(error);
     }
   });
-  
-module.exports = router;
-
-router.get('/newEventView', (req, res) => { 
-
-  res.render('protected-views/newEventView', { loggedUser: req.session.currentUser });
-
-});
-
 
 //Each eventPageView route
 
@@ -67,12 +66,14 @@ router.get('/eventPageView/:eventId', async( req, res)=> {
   try{
     const { eventId } = req.params;
 
-    const eventDetail = await Event.findById(eventId);
+    const eventDetail = await Event.findById(eventId).populate('owner');
 
-    res.render('protected-views/eventPageView', eventDetail, { loggedUser: req.session.currentUser });
+    res.render('protected-views/eventPageView', { eventDetail, loggedUser: req.session.currentUser });
 
   } catch(error){
     console.log(error)
   }
 
 });
+
+module.exports = router;

@@ -1,14 +1,14 @@
 <main>
-    <h1>{{name}}</h1>
+    <h1>{{eventDetail.name}}</h1>
     
     <ul>Detalhes do Evento
-    <li>Por: {{owner}}</li>
-    <li>Data: {{date}}</li>
-    <li>Horário: {{time}}</li>
-    <li>Duração: {{duration}}</li>
-    <li>Localização: {{location}}</li>
-    <li>Quantidade de pessoas: {{participantsAmt}}</li>
-    <li>Descrição: {{description}}</li>
+    <li>Por: {{eventDetail.owner.name}}</li>
+    <li>Data: {{eventDetail.date}}</li>
+    <li>Horário: {{eventDetail.time}}</li>
+    <li>Duração: {{eventDetail.duration}}</li>
+    <li>Localização: {{eventDetail.location}}</li>
+    <li>Quantidade de pessoas: {{eventDetail.participantsAmt}}</li>
+    <li>Descrição: {{eventDetail.description}}</li>
 
     </ul>
 </main>
