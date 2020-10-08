@@ -15,7 +15,7 @@ router.get('/home', (req, res) => {
 //creating 'new event' route
 
 router.get('/newEventView', (req, res) => {
-    res.render('protected-views/newEventView'); 
+    res.render('protected-views/newEventView', { loggedUser: req.session.currentUser }); 
 });
 
 router.post('/newEventView', async (req, res)=> {
@@ -44,13 +44,22 @@ res.redirect('protected-views/myEventsView');
 router.get('/myEventsView', async (req, res) => { 
     try {
       const eventsData = await Event.find({ $or: [{participantsId: { $in: [req.session.currentUser._id] }}, {owner:req.session.currentUser._id}]}).populate('owner');
-
-      res.render('protected-views/myEventsView' , { eventsData,loggedUser: req.session.currentUser});
+    
+      res.render('protected-views/myEventsView' , { eventsData });
 
     } catch (error) {
       console.log(error);
     }
   });
+  
+module.exports = router;
+
+router.get('/newEventView', (req, res) => { 
+
+  res.render('protected-views/newEventView', { loggedUser: req.session.currentUser });
+
+});
+
 
 //Each eventPageView route
 
@@ -60,7 +69,7 @@ router.get('/eventPageView/:eventId', async( req, res)=> {
 
     const eventDetail = await (await Event.findById(eventId)).populate('owner');
 
-    res.render('protected-views/eventPageView', {eventDetail, loggedUser: req.session.currentUser});
+    res.render('protected-views/eventPageView', eventDetail, { loggedUser: req.session.currentUser });
 
   } catch(error){
     console.log(error);
