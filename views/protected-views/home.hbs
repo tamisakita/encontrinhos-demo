@@ -1,11 +1,36 @@
-<h1>HOMMEEE</h1>
-
 <section>
   <div>
-    <form>Busque um evento
+    <form action="/event-search" method="GET">Busque um evento
       <input type="text" name="events" placeholder="Eventos">
       <button type="submit">Procurar</button>
     </form>
   </div>
 </section>
+
+<main>
+  {{#if eventsData}}
+    <div class="info-dash-container">
+      {{!-- <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Horário</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Criador</th>
+            <th scope="col"></th>
+          </tr>
+        </thead> --}}
+        <tbody id="table-body">
+          {{#each eventsData}}
+            {{>urlTableRows this}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{else}}
+    <div class="empty-dash-container">
+      <h2>Ainda não existem eventos.</h2>
+    </div>
+  {{/if}}
+</main>  
 
