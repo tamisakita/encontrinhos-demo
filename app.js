@@ -5,9 +5,11 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const hbs = require('hbs');
 const path = require('path');
+const cors = require('cors');
 
 const appRoutes = require('./routes/appRoutes');
 const authRoutes = require('./routes/authRoutes');
+const apiRoutes = require('./routes/apiRoutes');
 
 const app = express();
 
@@ -27,9 +29,12 @@ app.set('views', __dirname + '/views');
 
 hbs.registerPartials(path.join(__dirname + '/views/partials'));
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(cors({
+  origin: 'http://localhost:3000',
+}));
 
 app.use('/', authRoutes);
 app.use('/', appRoutes);
+app.use('/api', apiRoutes);
 
 app.listen(process.env.PORT, () => console.log(`My first app listening on port ${process.env.PORT}!`));
-
