@@ -1,8 +1,7 @@
 <section>
   <div>
-    <form action="/event-search" method="GET">Busque um evento
-      <input type="text" name="events" placeholder="Eventos">
-      <button type="submit">Procurar</button>
+    <label for="eventsSearch">Busque um evento</label>
+    <input type="text" name="eventsSearch" id="eventsSearch" placeholder="Digite o nome do evento">
     </form>
   </div>
 </section>
@@ -10,8 +9,8 @@
 <main>
   {{#if eventsData}}
     <div class="info-dash-container">
-      {{!-- <table class="table">
-        <thead>
+      <table class="table">
+        {{!-- <thead>
           <tr>
             <th scope="col">Data</th>
             <th scope="col">Horário</th>
@@ -34,3 +33,4 @@
   {{/if}}
 </main>  
 
+<script src="/javascript/script.js"></script>

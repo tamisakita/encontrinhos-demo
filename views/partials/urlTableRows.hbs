@@ -1,17 +1,14 @@
-<tr>
- 
+<tr id="events-info">
+   <td>
+  <div class="registered-button"> {{!-- imagem do botão inscrito --}}
+      <button id="registered-button" type="button" name="Inscrito">Inscreva-se{{!-- criar uma ação de remoção da inscrição --}}</button>
+    </div>
+  </td>
+
   <td>{{this.date}}</td>
   <td>{{this.time}}</td>
   <td>
     <a href="/eventPageView/{{this._id}}"> {{this.name}}</a> 
-    </td>
-  <td>{{this.owner.name}}</td> 
-
-  <td>
-  <div class="registered-button"> {{!-- imagem do botão inscrito --}}
-      <button id="registered-button" type="button" name="Inscrito">
-          {{!-- criar uma ação de remoção da inscrição --}} 
-          </button>
-    </div>
   </td>
+  <td>{{this.owner.name}}</td>
 </tr>

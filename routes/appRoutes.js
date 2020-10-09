@@ -62,12 +62,12 @@ router.get('/myEventsView', async (req, res) => {
 
 //Each eventPageView route
 
-router.get('/eventPageView/:eventId', async( req, res)=> {
+router.get('/eventPageView/:eventId', async(req, res)=> {
   try{
     const { eventId } = req.params;
 
-    const eventDetail = await (await Event.findById(eventId)).populate('owner');
-
+    const eventDetail = await Event.findById(eventId).populate('owner');
+    console.log(eventDetail);
     res.render('protected-views/eventPageView', { eventDetail, loggedUser: req.session.currentUser });
 
   } catch(error){
