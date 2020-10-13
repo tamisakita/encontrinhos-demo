@@ -18,7 +18,7 @@ require('./configs/session.config')(app);
 mongoose.connect('mongodb://localhost/encontrinhos-database', {useUnifiedTopology:true, useNewUrlParser:true})
 
   .then(() => console.log('Mongo connected'))
-  .catch( error => {
+  .catch(error => {
     console.log(error);
     throw new Error ('database not working');
   });
