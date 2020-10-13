@@ -3,8 +3,8 @@ const Event = require('../models/Event');
 
 const router = express.Router();
 
-router.get('/events/:name', async (req, res) => {
-  const { name } = req.params;
+router.get('/events', async (req, res) => {
+  const { name } = req.query;
 
   const regex = new RegExp(name, 'i');
 
