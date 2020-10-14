@@ -1,12 +1,15 @@
 <tr id="events-info">
    <td>
-  <div class="registered-button">
-      <form action="/home/{{this._id}}" method="get">
-    <button name="register-button" value="Inscrever">Inscrever-se</button>
+  <div class="registered-button">    
+  {{#if currentParticipant}}
+    <p>Já inscrito</p>
+  {{else}}
+    <form action="/home/{{this._id}}" method="get"></form>
+      <button name="register-button" value="Inscrever">Inscrever-se</button>
     </form>
+  {{/if}}
     </div>
   </td>
-
   <td>{{this.date}}</td>
   <td>{{this.time}}</td>
   <td>
