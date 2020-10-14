@@ -10,6 +10,10 @@ router.use(protectedRoute);
 // 'home'route
 router.get('/home', async (req, res) => {
   try {
+<<<<<<< HEAD
+
+=======
+>>>>>>> 25f9f0162f88df15d784a2c82d4edbcdfc503345
     const eventsData = await Event.find().populate('owner');
 
     res.render('protected-views/home', { eventsData, loggedUser: req.session.currentUser });
@@ -76,14 +80,13 @@ router.get('/eventPageView/:eventId', async(req, res)=> {
 
 //Action from the button "Inscrever-se"
 
-router.post('/home/:eventId/edit', async (req, res)=> {
+router.get('/home/:eventId',async (req, res)=> {
   const { eventId } = req.params;
-  const {  userId  } = req.session.currentUser._id;
+  const userId = req.session.currentUser._id;
 
-  await Event.findById(eventId)
-  .then (event => event.participantsId.push(userId))
-  .then (event => event.save());
-   
+  const updatedEvent = await Event.findOneAndUpdate({_id:eventId}, {$push:{participantsId:userId}});
+
+  res.redirect('/home');
 });
 
 module.exports = router;
