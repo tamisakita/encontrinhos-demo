@@ -10,10 +10,6 @@ router.use(protectedRoute);
 // 'home'route
 router.get('/home', async (req, res) => {
   try {
-<<<<<<< HEAD
-
-=======
->>>>>>> 25f9f0162f88df15d784a2c82d4edbcdfc503345
     const eventsData = await Event.find().populate('owner');
 
     res.render('protected-views/home', { eventsData, loggedUser: req.session.currentUser });
