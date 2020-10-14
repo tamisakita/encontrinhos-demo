@@ -10,13 +10,16 @@ router.use(protectedRoute);
 // 'home'route
 router.get('/home', async (req, res) => {
   try {
-<<<<<<< HEAD
-
-=======
->>>>>>> 25f9f0162f88df15d784a2c82d4edbcdfc503345
     const eventsData = await Event.find().populate('owner');
+    const eventsCopy = JSON.parse(JSON.stringify(eventsData));
 
-    res.render('protected-views/home', { eventsData, loggedUser: req.session.currentUser });
+    eventsCopy.forEach(event => {
+      event.currentParticipant = event.participantsId.includes(req.session.currentUser._id); //testar se o ID do nosso usuário logado existe dentro do participantsId
+    });
+    console.log(eventsCopy);
+
+    res.render('protected-views/home', { eventsData:eventsCopy, loggedUser: req.session.currentUser });
+    
   } catch (error) {
     console.log(error);
   }
