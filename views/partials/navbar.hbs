@@ -1,12 +1,18 @@
 <nav>
-  <h1>ENCONTRINHOS</h1>
+  <div>
+    <h1 id="logo">ENCONTRINHOS</h1>
+  </div>
   {{#if loggedUser}}
-  <a href="/home">Página inicial</a>
-  <a href="/myEventsView">Meus eventos</a>
-  <button><a href="/newEventView">Criar novo evento</a></button>
-  <a href="/login">Sair</a>
+  <div>
+    <a href="/home">Página inicial</a>
+    <a href="/myEventsView">Meus eventos</a>
+    <button id="button-navbar"><a id="a-criar-novo-evento" href="/newEventView">Criar novo evento</a></button>
+    <a href="/login">Sair</a>
+  </div>
   {{else}}
-  <a href="/login">Entrar</a>
-  <a href="/signup">Cadastrar-se</a>
+  <div>
+    <a href="/login">Entrar</a>
+    <a href="/signup">Cadastrar-se</a>
+  </div>
   {{/if}}
 </nav>

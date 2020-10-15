@@ -1,6 +1,8 @@
-<main>
- <form action="/login" method="post">
-   <h2>Entrar</h2>
+<div class="background-image"></div>
+
+<main id="form-login">
+ <form id="form-login-items" action="/login" method="post">
+   <h3>Entrar</h3>
     <div>
       <label for="name"></label>
       <input type="text" name="name" id="name" placeholder="Nome de usuário">
@@ -23,7 +25,7 @@
       {{/if}}
     </div>
 
-    <button type="submit">Entrar</button>
+    <button class="button-login-signup" type="submit">Entrar</button>
 
     {{#if errorMessage}}
       <div>
