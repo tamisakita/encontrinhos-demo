@@ -1,36 +1,30 @@
-<section>
-  <div>
-    <label for="eventsSearch">Busque um evento</label>
-    <input type="text" name="eventsSearch" id="eventsSearch" placeholder="Digite o nome do evento">
-    </form>
-  </div>
-</section>
+<div class="home-page">
+  <section id="event-search-box">
+    <div id="event-search-box-content">
+      <label for="eventsSearch">Busque um evento</label>
+        <img id="icon-search" src="./images/search.png">
+      <input id="event-seatch-input" type="text" name="eventsSearch" id="eventsSearch" placeholder="Digite o nome do evento">
+    </div>
+  </section>
 
-<main>
-  {{#if eventsData}}
-    <div class="info-dash-container">
-      <table class="table">
-        {{!-- <thead>
-          <tr>
-            <th scope="col">Data</th>
-            <th scope="col">Horário</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Criador</th>
-            <th scope="col"></th>
-          </tr>
-        </thead> --}}
-        <tbody id="table-body">
-          {{#each eventsData}}
-            {{>urlTableRows this}}
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-  {{else}}
-    <div class="empty-dash-container">
-      <h2>Ainda não existem eventos.</h2>
-    </div>
-  {{/if}}
-</main>  
+  <main class="main-loggedarea">
+    {{#if eventsData}}
+      <div class="info-dash-container">
+        <table class="table">
+          <tbody id="table-body">
+            {{#each eventsData}}
+              {{>urlTableRows this}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    {{else}}
+      <div class="empty-dash-container">
+        <h2>Ainda não existem eventos.</h2>
+      </div>
+    {{/if}}
+  </main>  
+</div>
+
 
 <script src="/javascript/script.js"></script>
