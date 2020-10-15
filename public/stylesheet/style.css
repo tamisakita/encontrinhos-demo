@@ -68,7 +68,7 @@ main {
   font-size: 25px;
 }
 
-main {
+.signup-box {
   display: flex;
   justify-content: space-between;
   padding-top: 170px;
@@ -215,5 +215,23 @@ tr {
 }
 
 .main-loggedarea {
-  /* width: 1200px; */
+  max-width: 100vw;
+  width: 100%;
 }
+
+.info-dash-container {
+  max-width: 100vw;
+  width: 60%;
+  margin: 0 auto;
+  border-collapse:collapse;
+  border: none;
+}
+
+.info-dash-container > table {
+  width: 100%;
+}
+
+table, tr, td { 
+    border: none;
+    border-collapse:collapse
+  }
