@@ -4,8 +4,8 @@
   {{#if currentParticipant}}
     <p>Já inscrito</p>
   {{else}}
-    <form action="/home/{{this._id}}" method="get"></form>
-      <button id="button-to-register" name="register-button" value="Inscrever">Inscrever-se</button>
+    <form action="/home/{{this._id}}" method="get">
+      <button id="button-to-register" name="register-button" value="Inscrever" type="submit">Inscrever-se</button>
     </form>
   {{/if}}
     </div>
