@@ -1,46 +1,47 @@
 
 <body>
 <main>
-   <form action="/newEventView" method="post">
+   <form id="newEventForm" action="/newEventView" method="post">
+   <h4>Criar Novo Evento</h4>
     <div>
-        <label for="name-input">Nome:</label>
+        <label for="name-input">Nome:</label><br>
         <input type="text" name="name" id="name-input" />
     </div>
 
     <div>
-        <label for="date-input">Date:</label>
+        <label for="date-input">Date:</label><br>
         <input type="date" name="date" id="date" />
     </div>
 
     <div>
-        <label for="time-input">Horário(hh:mm):</label>
+        <label for="time-input">Horário(hh:mm):</label><br>
         <input type="text" name="time" id="time-input" />
     </div>
 
     <div>
-        <label for="duration-input">Duração(em horas):</label>
+        <label for="duration-input">Duração(em horas):</label><br>
         <input type="number" name="duration" id= "duration-input" />
     </div>
 
     <div>
-        <label for="location-input">Localização</label>
+        <label for="location-input">Localização</label><br>
         <input type="text" name ="location" id="location-input" />
     </div>
 
     <div>
-        <label for="participantsAmt-input">Número de Participantes</label>
+        <label for="participantsAmt-input">Número de Participantes</label><br>
         <input type="number" name="participantsAmt" id="participantsAmt-input" />
     </div>
 
     <div>
-        <label for="description-input">Descrição</label>
-        <textarea name="description" id="description-input" cols="30" rows="4" ></textarea>
+        <label for="description-input">Descrição</label><br>
+        <textarea name="description" id="description-input" cols="65.5" rows="4" ></textarea>
     </div>
     
 
-    <div class="button">
-        <button type="submit">Criar Evento</button>
+    <div>
+        <button class="button" type="submit">Criar Evento</button>
     </div>
-</form> 
+</form>    
 </main>
 </body>
