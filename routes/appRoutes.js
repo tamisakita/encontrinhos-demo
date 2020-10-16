@@ -49,7 +49,7 @@ router.post('/newEventView', async (req, res)=> {
 
 await newEvent.save();
 
-res.redirect('protected-views/myEventsView');
+res.redirect('/myEventsView');
 });
 
 //'my events'route

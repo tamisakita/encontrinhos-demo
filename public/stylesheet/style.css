@@ -133,6 +133,7 @@ h2 {
 #form-login {
   display: flex;
   justify-content: center;
+  margin-top: 300px;
 }
 
 h3 {
@@ -193,7 +194,7 @@ h3 {
   align-items: baseline;
 }
 
-#event-seatch-input {
+#eventsSearch {
   width: 813px;
   height: 67px;
   margin-left: 90px;
@@ -209,9 +210,13 @@ h3 {
 tr {
   color: black;
   font-size: 20px;
-  background-color: gray;
+  background-color: #FDFAFA;
+  border-radius: 5px;
   width: 1207px;
   height: 129px;
+  text-align: center;
+  box-shadow: 10px 5px 5px darkgray;
+  border-radius: 5px;
 }
 
 .main-loggedarea {
@@ -221,7 +226,7 @@ tr {
 
 .info-dash-container {
   max-width: 100vw;
-  width: 60%;
+  width: 57.5%;
   margin: 0 auto;
   border-collapse:collapse;
   border: none;
@@ -229,9 +234,93 @@ tr {
 
 .info-dash-container > table {
   width: 100%;
+  margin-top: 20px;
 }
 
 table, tr, td { 
     border: none;
     border-collapse:collapse
-  }
+}
+
+#button-to-register {
+  background-color: #BCF3FF;
+  width: 226px;
+  height: 69px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.registered-button{
+  width: 84%;
+}
+
+td {
+  padding-right: 50px;
+}
+
+#event-name {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 50px;
+  color: #ff8c21;
+  text-align: center;
+  margin-top: 50px;
+  padding-bottom: 30px;
+}
+
+#newEventForm {
+  background-color: #fdfafa;
+  width: 1210px;
+  height: 789px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display:flex;
+  flex-flow: column;
+  align-items: center;
+  justify-items: center;
+  font-weight: bold;
+  box-shadow: 10px 5px 5px darkgray;
+  border-radius: 5px;
+}
+
+.button {
+  background-color: #BCF3FF;
+  width: 226px;
+  height: 69px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#event-details {
+  background-color: #FDFAFA;
+  width: 1207px;
+  height: 548px;
+  box-shadow: 10px 5px 5px darkgray;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding-top: 50px;
+  padding-left: 60px;
+}
+
+h5 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  list-style: none;
+  font-size: 20px;
+}
