@@ -16,7 +16,6 @@ router.get('/home', async (req, res) => {
     eventsCopy.forEach(event => {
       event.currentParticipant = event.participantsId.includes(req.session.currentUser._id); //testar se o ID do nosso usuário logado existe dentro do participantsId
     });
-    console.log(eventsCopy);
 
     res.render('protected-views/home', { eventsData:eventsCopy, loggedUser: req.session.currentUser });
     
@@ -57,8 +56,13 @@ res.redirect('/myEventsView');
 router.get('/myEventsView', async (req, res) => { 
     try {
       const eventsData = await Event.find({ $or: [{participantsId: { $in: [req.session.currentUser._id] }}, {owner:req.session.currentUser._id}]}).populate('owner');
+      const eventsCopy = JSON.parse(JSON.stringify(eventsData));
+
+    eventsCopy.forEach(event => {
+      event.currentParticipant = event.participantsId.includes(req.session.currentUser._id); //testar se o ID do nosso usuário logado existe dentro do participantsId
+    });
     
-      res.render('protected-views/myEventsView' , { eventsData, loggedUser: req.session.currentUser });
+      res.render('protected-views/myEventsView' , { eventsData:eventsCopy, loggedUser: req.session.currentUser });
 
     } catch (error) {
       console.log(error);
@@ -87,9 +91,9 @@ router.get('/home/:eventId',async (req, res)=> {
   const { eventId } = req.params;
   const userId = req.session.currentUser._id;
 
-  const updatedEvent = await Event.findOneAndUpdate({_id:eventId}, {$push:{participantsId:userId}});
+  const eventDetail = await Event.findOneAndUpdate({_id:eventId}, {$push:{participantsId:userId}});
 
-  res.redirect('/home');
+  res.render('protected-views/eventPageView', { eventDetail, loggedUser: req.session.currentUser });
 });
 
 module.exports = router;
