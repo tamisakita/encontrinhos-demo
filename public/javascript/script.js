@@ -42,3 +42,4 @@ eventsSearchInput.oninput = async (event) => {
 }
 
 // console.log(eventsSearchInput);
+// oiii
