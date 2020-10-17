@@ -12,7 +12,7 @@ router.get('/events', async (req, res) => {
   const events = await Event.find({
     name: { $regex: regex },
   }).populate('owner');
-  console.log(events)
+  // console.log(events)
 
   res.json({ events });
 });

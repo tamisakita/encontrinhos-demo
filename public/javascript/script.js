@@ -5,17 +5,29 @@ eventsSearchInput.oninput = async (event) => {
 
   const response = await axios.get(requestURL);
 
-  console.log(response.data);
+  response.data.events.forEach(event => {
+    event.currentParticipant = event.participantsId.includes(document.getElementById("current-user").value); //testar se o ID do nosso usuário logado existe dentro do participantsId
+  });
 
   const tr = document.getElementById('table-body');
   tr.innerHTML = '';
 
+  // console.log(sessionStorage.currentUser, 'oláaaaaaaa');
+
   response.data.events.forEach((oneEvent) => {
+    const button = `
+      <form action="/home/${oneEvent._id}" method="get">
+        <button id="button-to-register" name="register-button" value="Inscrever" type="submit">Inscrever-se</button>
+      </form>
+    `;
+
+    const registered = "<p>Já inscrito</p>";
+
     tr.innerHTML += `
-    <tr id="events-info">
+    <tr id="events-info-${oneEvent._id}">
     <td>
     <div class="registered-button"> 
-        <button id="registered-button" type="button" name="Inscrito">Inscreva-se</button>
+      ${oneEvent.currentParticipant ? registered : button}
     </div>
     </td>
       <td>${oneEvent.date}</td>
