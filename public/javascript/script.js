@@ -33,7 +33,7 @@ eventsSearchInput.oninput = async (event) => {
       <td>${oneEvent.date}</td>
       <td>${oneEvent.time}</td>
       <td>
-        <a href="/eventPageView/${oneEvent._id}">${oneEvent.name}</a> 
+        <a id="event-name" href="/eventPageView/${oneEvent._id}">${oneEvent.name}</a> 
         </td>
       <td>${oneEvent.owner ? oneEvent.owner.name : ''}</td> 
     </tr>

@@ -91,7 +91,7 @@ router.get('/home/:eventId',async (req, res)=> {
   const { eventId } = req.params;
   const userId = req.session.currentUser._id;
 
-  const eventDetail = await Event.findOneAndUpdate({_id:eventId}, {$push:{participantsId:userId}});
+  const eventDetail = await Event.findOneAndUpdate({_id:eventId}, {$push:{participantsId:userId}}).populate('owner');
 
   res.render('protected-views/eventPageView', { eventDetail, loggedUser: req.session.currentUser });
 });
