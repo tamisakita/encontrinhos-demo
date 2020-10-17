@@ -34,8 +34,9 @@ hbs.registerPartials(path.join(__dirname + "/views/partials"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: "http://localhost:3000",
-  })
+    origin: [process.env.URL_BASE, "https://encontrinhos.herokuapp.com"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  }),
 );
 
 app.use("/", authRoutes);

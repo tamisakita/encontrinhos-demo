@@ -1,7 +1,7 @@
 const eventsSearchInput = document.querySelector('#eventsSearch');
 
 eventsSearchInput.oninput = async (event) => {
-  const requestURL = `http://localhost:3000/api/events?name=${event.target.value}`;
+  const requestURL = `${process.env.URL_BASE}/api/events?name=${event.target.value}`;
 
   const response = await axios.get(requestURL);
 
